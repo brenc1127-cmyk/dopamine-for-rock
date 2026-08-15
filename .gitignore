@@ -1,0 +1,7 @@
+BUILD/
+RPMS/
+SRPMS/
+dist/
+node_modules/
+*.buildlog
+*.tar.gz

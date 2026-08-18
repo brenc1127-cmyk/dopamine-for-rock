@@ -7,8 +7,8 @@ Release:        1
 Summary:        An audio player that keeps it simple
 License:        MIT
 Group:          Sound
-URL:            https://github.com/digimezzo/dopamine/releases
-Source0:        https://github.com/digimezzo/dopamine/archive/v%{version}.tar.gz
+URL:            https://github.com/digimezzo/dopamine
+Source0:        https://github.com%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        dopamine-node_modules-%{version}.tar.gz
 
 BuildRequires:  nodejs
@@ -20,14 +20,8 @@ BuildRequires:  typescript
 Dopamine is an elegant Electron audio player.
 
 %prep
-# Create a fresh, empty build workspace
-%setup -q -c -T
-
-# Unpack the Dopamine source code here
-tar -xf %{SOURCE0} --strip-components=1
-
-# Unpack your offline node_modules archive here so they sit side-by-side
-tar -xf %{SOURCE1}
+# Standard setup macro: -a 1 tells it to automatically unpack Source1 into the same directory
+%setup -q -n %{name}-%{version} -a 1
 
 %build
 # 1. Expand Node's maximum RAM usage footprint to 4GB to stop the container freeze
